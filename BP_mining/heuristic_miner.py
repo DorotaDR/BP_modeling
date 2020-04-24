@@ -114,8 +114,10 @@ class HeuristicMiner(BaseMiner):
     @staticmethod
     def calculate_causality_normalization(t1: str, t2: str, relation_df: pd.DataFrame):
         """T1->T2"""
-        if np.isnan(relation_df.loc[t1, t2]):
+        if np.isnan(relation_df.loc[t1, t2]) and np.isnan(relation_df.loc[t2, t1]):
             return np.nan
+        elif np.isnan(relation_df.loc[t1, t2]):
+            return (-relation_df.loc[t2, t1]) / (relation_df.loc[t2, t1] + 1)
         else:
             reverse_count = 0 if np.isnan(relation_df.loc[t2, t1]) else relation_df.loc[t2, t1]
             return (relation_df.loc[t1, t2] - reverse_count)/(relation_df.loc[t1, t2] + reverse_count+1)
