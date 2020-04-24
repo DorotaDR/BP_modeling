@@ -1,0 +1,227 @@
+<!-- Created by Me -->
+        <!-- (c) 2020  -->
+        <log xes.version="1.0" xmlns="http://code.deckfour.org/xes" xes.creator="">
+        <extension name="Concept" prefix="concept" uri="http://code.deckfour.org/xes/concept.xesext"/>
+        <extension name="Time" prefix="time" uri="http://code.deckfour.org/xes/time.xesext"/>
+        <extension name="Organizational" prefix="org" uri="http://code.deckfour.org/xes/org.xesext"/>
+        <global scope="trace">
+        <string key="concept:name" value="name"/>
+        </global>
+        <global scope="event">
+        <string key="concept:name" value="name"/>
+        <date key="time:timestamp" value="2010-04-13T14:02:31.199+02:00"/>
+        </global>
+
+<trace>
+        <string key="concept:name" value="1"/>
+        <string key="creator" value="Me"/>
+<event>
+        <string key="concept:name" value="a"/>
+        <date key="time:timestamp" value="2020-04-24T17:29:06.428428+00:00"/>
+        </event>
+<event>
+        <string key="concept:name" value="b"/>
+        <date key="time:timestamp" value="2020-04-25T17:29:06.428428+00:00"/>
+        </event>
+<event>
+        <string key="concept:name" value="c"/>
+        <date key="time:timestamp" value="2020-04-26T17:29:06.428428+00:00"/>
+        </event>
+<event>
+        <string key="concept:name" value="e"/>
+        <date key="time:timestamp" value="2020-04-27T17:29:06.428428+00:00"/>
+        </event>
+<event>
+        <string key="concept:name" value="d"/>
+        <date key="time:timestamp" value="2020-04-28T17:29:06.428428+00:00"/>
+        </event>
+<event>
+        <string key="concept:name" value="f"/>
+        <date key="time:timestamp" value="2020-04-29T17:29:06.428428+00:00"/>
+        </event>
+<event>
+        <string key="concept:name" value="g"/>
+        <date key="time:timestamp" value="2020-04-30T17:29:06.428428+00:00"/>
+        </event>
+<event>
+        <string key="concept:name" value="i"/>
+        <date key="time:timestamp" value="2020-05-01T17:29:06.428428+00:00"/>
+        </event>
+</trace>
+<trace>
+        <string key="concept:name" value="1"/>
+        <string key="creator" value="Me"/>
+<event>
+        <string key="concept:name" value="a"/>
+        <date key="time:timestamp" value="2020-04-17T17:29:06.428428+00:00"/>
+        </event>
+<event>
+        <string key="concept:name" value="b"/>
+        <date key="time:timestamp" value="2020-04-18T17:29:06.428428+00:00"/>
+        </event>
+<event>
+        <string key="concept:name" value="b"/>
+        <date key="time:timestamp" value="2020-04-19T17:29:06.428428+00:00"/>
+        </event>
+<event>
+        <string key="concept:name" value="b"/>
+        <date key="time:timestamp" value="2020-04-20T17:29:06.428428+00:00"/>
+        </event>
+<event>
+        <string key="concept:name" value="c"/>
+        <date key="time:timestamp" value="2020-04-21T17:29:06.428428+00:00"/>
+        </event>
+<event>
+        <string key="concept:name" value="e"/>
+        <date key="time:timestamp" value="2020-04-22T17:29:06.428428+00:00"/>
+        </event>
+<event>
+        <string key="concept:name" value="d"/>
+        <date key="time:timestamp" value="2020-04-23T17:29:06.428428+00:00"/>
+        </event>
+<event>
+        <string key="concept:name" value="f"/>
+        <date key="time:timestamp" value="2020-04-24T17:29:06.428428+00:00"/>
+        </event>
+<event>
+        <string key="concept:name" value="g"/>
+        <date key="time:timestamp" value="2020-04-25T17:29:06.428428+00:00"/>
+        </event>
+<event>
+        <string key="concept:name" value="h"/>
+        <date key="time:timestamp" value="2020-04-26T17:29:06.428428+00:00"/>
+        </event>
+<event>
+        <string key="concept:name" value="g"/>
+        <date key="time:timestamp" value="2020-04-27T17:29:06.428428+00:00"/>
+        </event>
+<event>
+        <string key="concept:name" value="h"/>
+        <date key="time:timestamp" value="2020-04-28T17:29:06.428428+00:00"/>
+        </event>
+<event>
+        <string key="concept:name" value="g"/>
+        <date key="time:timestamp" value="2020-04-29T17:29:06.428428+00:00"/>
+        </event>
+<event>
+        <string key="concept:name" value="h"/>
+        <date key="time:timestamp" value="2020-04-30T17:29:06.428428+00:00"/>
+        </event>
+<event>
+        <string key="concept:name" value="g"/>
+        <date key="time:timestamp" value="2020-05-01T17:29:06.428428+00:00"/>
+        </event>
+<event>
+        <string key="concept:name" value="i"/>
+        <date key="time:timestamp" value="2020-05-02T17:29:06.428428+00:00"/>
+        </event>
+</trace>
+<trace>
+        <string key="concept:name" value="1"/>
+        <string key="creator" value="Me"/>
+<event>
+        <string key="concept:name" value="a"/>
+        <date key="time:timestamp" value="2020-04-10T17:29:06.428428+00:00"/>
+        </event>
+<event>
+        <string key="concept:name" value="b"/>
+        <date key="time:timestamp" value="2020-04-11T17:29:06.428428+00:00"/>
+        </event>
+<event>
+        <string key="concept:name" value="b"/>
+        <date key="time:timestamp" value="2020-04-12T17:29:06.428428+00:00"/>
+        </event>
+<event>
+        <string key="concept:name" value="c"/>
+        <date key="time:timestamp" value="2020-04-13T17:29:06.428428+00:00"/>
+        </event>
+<event>
+        <string key="concept:name" value="d"/>
+        <date key="time:timestamp" value="2020-04-14T17:29:06.428428+00:00"/>
+        </event>
+<event>
+        <string key="concept:name" value="e"/>
+        <date key="time:timestamp" value="2020-04-15T17:29:06.428428+00:00"/>
+        </event>
+<event>
+        <string key="concept:name" value="f"/>
+        <date key="time:timestamp" value="2020-04-16T17:29:06.428428+00:00"/>
+        </event>
+<event>
+        <string key="concept:name" value="g"/>
+        <date key="time:timestamp" value="2020-04-17T17:29:06.428428+00:00"/>
+        </event>
+<event>
+        <string key="concept:name" value="h"/>
+        <date key="time:timestamp" value="2020-04-18T17:29:06.428428+00:00"/>
+        </event>
+<event>
+        <string key="concept:name" value="g"/>
+        <date key="time:timestamp" value="2020-04-19T17:29:06.428428+00:00"/>
+        </event>
+<event>
+        <string key="concept:name" value="h"/>
+        <date key="time:timestamp" value="2020-04-20T17:29:06.428428+00:00"/>
+        </event>
+<event>
+        <string key="concept:name" value="g"/>
+        <date key="time:timestamp" value="2020-04-21T17:29:06.428428+00:00"/>
+        </event>
+<event>
+        <string key="concept:name" value="i"/>
+        <date key="time:timestamp" value="2020-04-22T17:29:06.428428+00:00"/>
+        </event>
+</trace>
+<trace>
+        <string key="concept:name" value="1"/>
+        <string key="creator" value="Me"/>
+<event>
+        <string key="concept:name" value="a"/>
+        <date key="time:timestamp" value="2020-04-03T17:29:06.429426+00:00"/>
+        </event>
+<event>
+        <string key="concept:name" value="b"/>
+        <date key="time:timestamp" value="2020-04-04T17:29:06.429426+00:00"/>
+        </event>
+<event>
+        <string key="concept:name" value="b"/>
+        <date key="time:timestamp" value="2020-04-05T17:29:06.429426+00:00"/>
+        </event>
+<event>
+        <string key="concept:name" value="b"/>
+        <date key="time:timestamp" value="2020-04-06T17:29:06.429426+00:00"/>
+        </event>
+<event>
+        <string key="concept:name" value="b"/>
+        <date key="time:timestamp" value="2020-04-07T17:29:06.429426+00:00"/>
+        </event>
+<event>
+        <string key="concept:name" value="c"/>
+        <date key="time:timestamp" value="2020-04-08T17:29:06.429426+00:00"/>
+        </event>
+<event>
+        <string key="concept:name" value="d"/>
+        <date key="time:timestamp" value="2020-04-09T17:29:06.429426+00:00"/>
+        </event>
+<event>
+        <string key="concept:name" value="e"/>
+        <date key="time:timestamp" value="2020-04-10T17:29:06.429426+00:00"/>
+        </event>
+<event>
+        <string key="concept:name" value="f"/>
+        <date key="time:timestamp" value="2020-04-11T17:29:06.429426+00:00"/>
+        </event>
+<event>
+        <string key="concept:name" value="g"/>
+        <date key="time:timestamp" value="2020-04-12T17:29:06.429426+00:00"/>
+        </event>
+<event>
+        <string key="concept:name" value="h"/>
+        <date key="time:timestamp" value="2020-04-13T17:29:06.429426+00:00"/>
+        </event>
+<event>
+        <string key="concept:name" value="i"/>
+        <date key="time:timestamp" value="2020-04-14T17:29:06.429426+00:00"/>
+        </event>
+</trace>
+</log>
