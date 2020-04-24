@@ -4,9 +4,9 @@ import bpmn_python.bpmn_diagram_visualizer as visualizer
 import bpmn_python.bpmn_diagram_rep as diagram
 import graphviz
 
-from log_wrapper import LogWrapper
-from helpers import Relations
-from base_miner import BaseMiner
+from .log_wrapper import LogWrapper
+from .helpers import Relations
+from .base_miner import BaseMiner
 
 
 

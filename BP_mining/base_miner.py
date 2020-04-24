@@ -1,6 +1,6 @@
 import bpmn_python.bpmn_diagram_visualizer as visualizer
 
-from log_wrapper import LogWrapper
+from .log_wrapper import LogWrapper
 
 
 class BaseMiner():

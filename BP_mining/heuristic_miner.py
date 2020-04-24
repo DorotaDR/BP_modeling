@@ -6,8 +6,8 @@ import numpy as np
 import pandas as pd
 
 
-from log_wrapper import LogWrapper
-from base_miner import BaseMiner
+from BP_mining.log_wrapper import LogWrapper
+from BP_mining.base_miner import BaseMiner
 
 
 class HeuristicMiner(BaseMiner):
@@ -44,9 +44,9 @@ class HeuristicMiner(BaseMiner):
         self.normalize_relation_frequency_matrix()
         self.normalize_2loop_frequency_matrix()
 
-        print(f"Relation matrix \n {self.get_relation_frequency_matrix()}\n")
-
-        print(f"Loop  matrix \n {self.get_2loop_frequency_matrix()}\n")
+        # print(f"Relation matrix \n {self.get_relation_frequency_matrix()}\n")
+        #
+        # print(f"Loop  matrix \n {self.get_2loop_frequency_matrix()}\n")
 
     def get_relation_frequency_matrix(self, normalized: bool = True):
         return self.norm_relation_frequency_df if normalized else self.relation_frequency_df
@@ -112,7 +112,7 @@ class HeuristicMiner(BaseMiner):
         self.norm_rel_2loop_frequency_df = two_loop_df
 
     @staticmethod
-    def calculate_causality_normalization(self, t1: str, t2: str, relation_df: pd.DataFrame):
+    def calculate_causality_normalization(t1: str, t2: str, relation_df: pd.DataFrame):
         """T1->T2"""
         if np.isnan(relation_df.loc[t1, t2]):
             return np.nan
@@ -121,7 +121,7 @@ class HeuristicMiner(BaseMiner):
             return (relation_df.loc[t1, t2] - reverse_count)/(relation_df.loc[t1, t2] + reverse_count+1)
 
     @staticmethod
-    def calculate_self_loop_normalization(self, t1: str, relation_df: pd.DataFrame):
+    def calculate_self_loop_normalization(t1: str, relation_df: pd.DataFrame):
         """T1->T1"""
         if np.isnan(relation_df.loc[t1, t1]):
             return np.nan
@@ -129,7 +129,7 @@ class HeuristicMiner(BaseMiner):
             return relation_df.loc[t1, t1]/(relation_df.loc[t1, t1]+1)
 
     @staticmethod
-    def calculate_two_loop_normalization(self, t1: str, t2: str, relation_df: pd.DataFrame):
+    def calculate_two_loop_normalization(t1: str, t2: str, relation_df: pd.DataFrame):
         """T1->^2 T2"""
         if np.isnan(relation_df.loc[t1, t2]):
             return np.nan
