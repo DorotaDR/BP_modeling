@@ -10,10 +10,17 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 import os
 
+from BP_mining import *
+
 import pandas as pd
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
+        self.algorithm_type = None
+        self.param_value = None
+        self.miner = None
+
+
         MainWindow.resize(1200, 650)
         MainWindow.setWindowTitle("BPMN")
 
@@ -38,12 +45,12 @@ class Ui_MainWindow(object):
         self.label_param.setMaximumSize(QtCore.QSize(16777215, 20))
 
         self.gridLayout.addWidget(self.label_param, 4, 0, 1, 1)
-        self.doubleSpinBox_paramerer = QtWidgets.QDoubleSpinBox(self.centralwidget)
-        self.doubleSpinBox_paramerer.setDecimals(2)
-        self.doubleSpinBox_paramerer.setMaximum(1.0)
-        self.doubleSpinBox_paramerer.setSingleStep(0.1)
-        self.doubleSpinBox_paramerer.setMaximumSize(QtCore.QSize(50, 20))
-        self.gridLayout.addWidget(self.doubleSpinBox_paramerer, 4, 1, 1, 1)
+        self.doubleSpinBox_param = QtWidgets.QDoubleSpinBox(self.centralwidget)
+        self.doubleSpinBox_param.setDecimals(2)
+        self.doubleSpinBox_param.setMaximum(1.0)
+        self.doubleSpinBox_param.setSingleStep(0.1)
+        self.doubleSpinBox_param.setMaximumSize(QtCore.QSize(50, 20))
+        self.gridLayout.addWidget(self.doubleSpinBox_param, 4, 1, 1, 1)
 
         self.label_log_file = QtWidgets.QLabel(self.centralwidget)
         self.label_log_file.setMaximumSize(QtCore.QSize(16777215, 20))
@@ -71,6 +78,7 @@ class Ui_MainWindow(object):
         self.gridLayout.addWidget(self.pushButton_go, 5, 0, 1, 1)
         self.pushButton_go.setText("Go!")
         self.pushButton_go.setMaximumSize(QtCore.QSize(16777215, 20))
+        self.pushButton_go.clicked.connect(self.update)
 
         self.verticalLayout_2.addLayout(self.gridLayout)
 
@@ -81,6 +89,7 @@ class Ui_MainWindow(object):
         self.comboBox_matrix = QtWidgets.QComboBox(self.centralwidget)
         self.comboBox_matrix.addItem("Relation Matrix")
         self.comboBox_matrix.addItem("2-loop Matrix")
+        self.comboBox_matrix.currentIndexChanged.connect(self.update_output_df)
         self.verticalLayout_2.addWidget(self.comboBox_matrix)
 
         self.textBrowser = QtWidgets.QTextBrowser(self.centralwidget)
@@ -135,19 +144,56 @@ class Ui_MainWindow(object):
         name = QtWidgets.QFileDialog.getOpenFileName(self.MainWindow, 'Open File')[0]
         print("\n ------\n File to open: ", name)
         #Validate image
-        if '.png' in name.lower() or '.jpg' in name.lower() or ".jpeg" in name.lower():
+        if '.xes' in name.lower():
             # self.original_file_path = name
             self.lineEdit_filename.setText(os.path.basename(name))
+            self.log_fn = name
         return name
 
-    def set_output(self, to_print=None):
+    def set_output(self, dataframe: pd.DataFrame):
         from collections import OrderedDict
 
-        d = OrderedDict([('a', {}), ('b', {'a': 6, 'b': 3}), ('c', {'b': 3, 'd': 3}), ('d', {'c': 3, 'b': 3}), ('e', {'d': 2}), ('f', {'g': 3, 'd': 1, 'c': 3}), ('g', {'f': 3}), ('h', {'e': 2, 'f': 4})])
-        df = pd.DataFrame.from_dict(d).fillna(" ")
-        df.columns = [f"_{col}_" for col in df.columns]
+        # d = OrderedDict([('a', {}), ('b', {'a': 6, 'b': 3}), ('c', {'b': 3, 'd': 3}), ('d', {'c': 3, 'b': 3}), ('e', {'d': 2}), ('f', {'g': 3, 'd': 1, 'c': 3}), ('g', {'f': 3}), ('h', {'e': 2, 'f': 4})])
+        # df = pd.DataFrame.from_dict(d).fillna(" ")
+        # df.columns = [f"_{col}_" for col in df.columns]
 
-        self.textBrowser.setHtml(df.to_html())
+        dataframe = dataframe.fillna(" ")
+        self.textBrowser.setHtml(dataframe.to_html())
+
+    def save_input_params(self):
+        self.algorithm_type = 'alpha' if self.comboBox_alg.currentText()=="Alpha Miner" else "heuristic"
+        self.param_value = self.doubleSpinBox_param.value()
+
+
+    def update(self):
+        self.save_input_params()
+        print("Updating...")
+
+        if self.algorithm_type == 'alpha':
+            self.miner = AlphaMiner(self.log_fn)
+        else:
+            self.miner = HeuristicMiner(self.log_fn)
+
+        self.miner.execute_algorithm()
+
+        results_path = f"./../results/gui_{self.algorithm_type}"
+        self.miner.save_to_png(results_path)
+
+        self.display_image(results_path+'.png')
+        self.update_output_df()
+
+
+    def update_output_df(self):
+        if self.miner:
+            if self.algorithm_type == 'alpha':
+                self.set_output(self.miner.get_relation_df())
+            else:
+                if self.comboBox_matrix.currentText() == "Relation Matrix":
+                    self.set_output(self.miner.get_relation_frequency_matrix())
+                else:
+                    self.set_output(self.miner.get_2loop_frequency_matrix())
+
+
 
 if __name__ == "__main__":
     import sys
@@ -157,10 +203,6 @@ if __name__ == "__main__":
     ui.setupUi(MainWindow)
 
     ui.setupUi(MainWindow)
-
-    ui.display_image("./../results/alpha_result.png")
-
-    ui.set_output()
 
     MainWindow.show()
     sys.exit(app.exec_())
