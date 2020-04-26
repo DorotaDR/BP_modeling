@@ -17,7 +17,7 @@ import pandas as pd
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         self.algorithm_type = None
-        self.param_value = None
+        self.threshold = None
         self.miner = None
 
 
@@ -162,19 +162,21 @@ class Ui_MainWindow(object):
 
     def save_input_params(self):
         self.algorithm_type = 'alpha' if self.comboBox_alg.currentText()=="Alpha Miner" else "heuristic"
-        self.param_value = self.doubleSpinBox_param.value()
+        self.threshold = self.doubleSpinBox_param.value()
 
 
     def update(self):
         self.save_input_params()
         print("Updating...")
 
+        print(f"Executing algorithm {self.algorithm_type}...")
         if self.algorithm_type == 'alpha':
             self.miner = AlphaMiner(self.log_fn)
+            self.miner.execute_algorithm()
         else:
             self.miner = HeuristicMiner(self.log_fn)
+            self.miner.execute_algorithm(self.threshold)
 
-        self.miner.execute_algorithm()
 
         results_path = f"./../results/gui_{self.algorithm_type}"
         self.miner.save_to_png(results_path)
